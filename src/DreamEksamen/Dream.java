@@ -1,18 +1,19 @@
 package DreamEksamen;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Dream implements Comparable<Dream> {
-    double date;
+    LocalDate dato;
     int duration;
     Type type;
 
-    public Dream(double date, int duration, Type type){
-        this.date=date;
+    public Dream(int duration, Type type,LocalDate dato){
         this.duration=duration;
         this.type=type;
+        this.dato=dato;
     }
 
     public boolean isPleasant(Dream dream){
@@ -39,23 +40,17 @@ public class Dream implements Comparable<Dream> {
 
     @Override
     public int compareTo(Dream dream){
-        if(dream.date < this.date){
-            return 1;
-        }
-        if(dream.date > this.date){
-            return -1;
-        }
-        return 0;
+        return this.dato.compareTo(dream.dato);
     }
 
     public String toString(){
-        return "" + date + " " + duration + " " + type;
+        return "" + dato + " " + duration + " " + type;
     }
 
     public static void main(String[] args) {
-        Dream dream1 = new Dream(12.9,10,Type.WET);
-        Dream dream2 = new Dream(12.5,11,Type.DRY);
-        Dream dream3 = new Dream(20.1,20,Type.NIGHTMARE);
+        Dream dream1 = new Dream(10,Type.WET,LocalDate.of(1999,1,1));
+        Dream dream2 = new Dream(11,Type.DRY,LocalDate.of(1999,2,1));
+        Dream dream3 = new Dream(20,Type.NIGHTMARE,LocalDate.of(2000,4,2));
         dream1.isPleasant(dream1);
         dream2.isPleasant(dream2);
         dream3.isPleasant(dream3);

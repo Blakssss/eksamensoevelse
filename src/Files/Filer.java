@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class Filer {
     public void read() {
@@ -43,7 +44,6 @@ public class Filer {
         PrintStream printStream = new PrintStream(file2);
         printStream.println("Hello?");
     }
-
     public void read3() throws FileNotFoundException{
         File file = new File("text3.txt");
         Scanner input = new Scanner(file);
@@ -57,13 +57,26 @@ public class Filer {
         printStream.println("hello Doom Slayer");
         printStream.println("hello Vecna");
     }
-
-
+    public void write4() throws FileNotFoundException{
+        File file = new  File("text4.txt");
+        PrintStream printStream = new PrintStream(file);
+        printStream.println("Hvorfor er det så svært");
+        printStream.println("selv når man har fået det lært.");
+    }
+    public void read4() throws FileNotFoundException{
+        File file = new File("text4.txt");
+        Scanner scanner = new Scanner(file);
+        while(scanner.hasNextLine()){
+            System.out.println(scanner.nextLine());
+        }
+    }
     public static void main(String[] args) throws FileNotFoundException {
         Filer filer = new Filer();
         filer.write();
         filer.read();
         filer.write3();
         filer.read3();
+        filer.write4();
+        filer.read4();
     }
 }
